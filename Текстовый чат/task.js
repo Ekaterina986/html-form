@@ -7,16 +7,15 @@ function selectWidget(e){
 }
 
 function addMessages(e) {
-    const clientValue = e.target.value
+    const clientValue = e.target.value.trim()
     if (clientValue.length === 0 || e.code !== 'Enter' ){
         return;
     }
-    console.log(222, clientValue)
     const messageValue = ['Добрый день, мы ещё не проснулись. Позвоните через 10 лет', 'Добрый день!', 'Vы ещё не проснулись.', 'Позвоните через 10 лет']
     function getRandomNumber(min, max) {
         return Math.round(min - 0.5 + Math.random() * (max - min + 1))
     }
-    const item = getRandomNumber(0, messageValue.length);
+    const item = getRandomNumber(0, messageValue.length -1);
     const now = new Date().getHours() + ':' + new Date().getMinutes();
     const messages = document.querySelector( '.chat-widget__messages' );
     messages.innerHTML += `
